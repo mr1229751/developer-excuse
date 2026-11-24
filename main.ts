@@ -12,6 +12,8 @@ function assertEntryIsValid(line: string): void {
   const hasRealText = line.trim().length > 0;
   const withinLimit = line.length >= 1 && line.length <= 200;
   if (!isSingleLine || !hasRealText || !withinLimit) {
+    // Fail loudly before writing: the gate rejects anything outside
+    // 1-200 characters, multi-line text, and whitespace-only entries.
     throw new Error("Entry line must be 1-200 characters on a single line.");
   }
 }
